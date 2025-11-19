@@ -1,4 +1,4 @@
-module github.com/open-cloud-initiative/template-go
+module github.com/open-cloud-initiative/fabric
 
 go 1.25.1
 

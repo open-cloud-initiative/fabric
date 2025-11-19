@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package oci.fabric.plugin.v1;
+
+option go_package = "github.com/open-cloud-initative/fabric/proto/plugin/v1;plugin";
+
+service Plugin {
+  // Migrate the plugin to the latest version
+  rpc Migrate(Migrate.Request) returns (Migrate.Response);
+  // Get the name of the plugin
+  rpc GetName(GetName.Request) returns (GetName.Response);
+  // Get the current version of the plugin
+  rpc GetVersion(GetVersion.Request) returns (GetVersion.Response);
+  // Send signal to flush and close open connections
+  rpc Close(Close.Request) returns (Close.Response);
+}
+
+message Migrate {
+  message Request {
+    string version = 1; // The version to migrate to
+  }
+  message Response {
+    bool success = 1; // Indicates if the migration was successful
+    string message = 2; // Optional message about the migration
+  }
+}
+
+message GetName {
+  message Request {
+  
+  }
+  message Response {
+    string name = 1;
+  }
+}
+
+message GetVersion {
+  message Request {
+
+  }
+  message Response {
+    string version = 1;
+  }
+}
+
+message Close {
+  message Request {
+  }
+  message Response {
+  }
+}
